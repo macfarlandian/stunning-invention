@@ -1,8 +1,7 @@
 import { ascending } from 'd3-array';
-import { csv } from 'd3-fetch';
 import React, { useEffect, useState } from 'react';
 
-import dataUrl from '../data/data.csv';
+import fetchData from '../data/fetchData';
 import ProgressBar from '../ProgressBar';
 import DataTable from './DataTable';
 
@@ -14,7 +13,7 @@ export default function DataTableContainer() {
   const [loading, setLoading] = useState(true);
   useEffect(
     () => {
-      csv(dataUrl).then((data) => {
+      fetchData().then((data) => {
         // do an initial sort on the data to improve readability;
         // most of the component is generic but this sorting logic is not!
         data.sort((a, b) => (
