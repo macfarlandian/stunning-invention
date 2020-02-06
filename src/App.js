@@ -1,6 +1,6 @@
 import React from 'react';
 
-import DataTable from './DataTable';
+import DataViews from './DataViews';
 import Metadata from './Metadata';
 
 function App() {
@@ -11,9 +11,9 @@ function App() {
           <Metadata/>
         </div>
       </section>
-      <div className="section">
-        <DataTable/>
-      </div>
+      <section>
+        <DataViews />
+      </section>
     </>
   );
 }

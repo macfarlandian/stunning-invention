@@ -3,12 +3,15 @@ import { csv } from 'd3-fetch';
 import React, { useEffect, useState } from 'react';
 
 import dataUrl from '../data/data.csv';
+import ProgressBar from '../ProgressBar';
 import DataTable from './DataTable';
 
 export default function DataTableContainer() {
   // we're just going to fetch the data from a CSV file we've added to our bundle
   const [columns, updateColumns] = useState([]);
   const [rows, updateRows] = useState([]);
+  // loading state while we crunch data
+  const [loading, setLoading] = useState(true);
   useEffect(
     () => {
       csv(dataUrl).then((data) => {
@@ -22,6 +25,7 @@ export default function DataTableContainer() {
 
         updateColumns([...data.columns]);
         updateRows([...data]);
+        setLoading(false);
       });
     },
     // we don't need to keep re-running this fetch on render
@@ -30,5 +34,10 @@ export default function DataTableContainer() {
   );
   // this key function is also specific to our single dataset
   const rowKey = row => `${row.City}_${row.Year}`;
-  return <DataTable {...{ columns, rowKey, rows }} />;
+  return (
+    <>
+      {loading && <ProgressBar />}
+      {!loading && <DataTable {...{ columns, rowKey, rows }} />}
+    </>
+  );
 }
