@@ -1,0 +1,14 @@
+{
+  "description": "List rent refers to the advertised rents for available rental housing and serves as a measure of housing costs for new households moving into a neighborhood, city, county or region.",
+  "lastUpdated": "2017-01-19",
+  "sources": [
+    {
+      "name": "real Answers (1994 – 2015)"
+    },
+    {
+      "name": "Zillow Metro Median Listing Price All Homes (2010-2016)",
+      "url": "http://www.zillow.com/research/data/"
+    }
+  ],
+  "title": "Vital Signs: List Rents – by city"
+}
